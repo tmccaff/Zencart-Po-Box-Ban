@@ -3,16 +3,16 @@
  * Header code file for the Address Book Process page
  *
  * @package page
- * @copyright Copyright 2003-2016 Zen Cart Development Team
+ * @copyright Copyright 2003-2019 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
- * @version $Id: Author: zcwilt Fri Apr 15 Modified in v1.5.5 $
- * MODIFIED FOR PO BOX BAN V1.5 for Zen Cart 1.5.5f
+ * @version $Id: mc12345678 2019 Apr 30 Modified in v1.5.6b $
+* MODIFIED FOR PO BOX BAN V1.6 for Zen Cart 1.5.6c
  */
 // This should be first line of the script:
 $zco_notifier->notify('NOTIFY_HEADER_START_ADDRESS_BOOK_PROCESS');
 
-if (!$_SESSION['customer_id']) {
+if (!zen_is_logged_in()) {
   $_SESSION['navigation']->set_snapshot();
   zen_redirect(zen_href_link(FILENAME_LOGIN, '', 'SSL'));
 }
@@ -22,7 +22,7 @@ require(DIR_WS_MODULES . zen_get_module_directory('require_languages.php'));
 /**
  * Process deletes
  */
-if (isset($_GET['action']) && ($_GET['action'] == 'deleteconfirm') && isset($_POST['delete']) && is_numeric($_POST['delete']))
+if (isset($_GET['action']) && ($_GET['action'] == 'deleteconfirm') && isset($_POST['delete']) && is_numeric($_POST['delete'])) 
 {
   $sql = "DELETE FROM " . TABLE_ADDRESS_BOOK . "
           WHERE  address_book_id = :delete
@@ -77,7 +77,6 @@ if (isset($_POST['action']) && (($_POST['action'] == 'process') || ($_POST['acti
     }
   }
   $country = zen_db_prepare_input($_POST['zone_country_id']);
-  //echo ' I SEE: country=' . $country . '&nbsp;&nbsp;&nbsp;state=' . $state . '&nbsp;&nbsp;&nbsp;zone_id=' . $zone_id;
 
   if (ACCOUNT_GENDER == 'true') {
     if ( ($gender != 'm') && ($gender != 'f') ) {
@@ -187,6 +186,12 @@ if (isset($_POST['action']) && (($_POST['action'] == 'process') || ($_POST['acti
     $error = true;
     $messageStack->add('addressbook', ENTRY_COUNTRY_ERROR);
   }
+
+  // -----
+  // Give an observer the opportunity to check the data submitted and identify
+  // an additional error.
+  //
+  $zco_notifier->notify('NOTIFY_ADDRESS_BOOK_PROCESS_VALIDATION', array(), $error);
 
   if ($error == false) {
     $sql_data_array= array(array('fieldName'=>'entry_firstname', 'value'=>$firstname, 'type'=>'stringIgnoreNull'),
