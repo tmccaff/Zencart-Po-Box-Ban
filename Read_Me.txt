@@ -2,15 +2,16 @@ Name
 ====
 PO Box Ban
 
-Version 1.5 tested on 1.5.5f; updated by tmccaff
+Version 1.6 tested on 1.5.6c; updated by tmccaff
 For this version it should be ok to just upload to your server.
 What I was told is that you don't need to add this to your shipping module like before.
-Tested it and seems to work.
+Tested it and seems to work. This mod does change the core, so backup before installing.
 
 any issues go to support thread listed below.
 
 Version Date
 ============
+1.6 08/11/2019
 1.5 1/18/2018 
 1.4 10.03.2012
 
@@ -39,7 +40,7 @@ messageStack. The 'add shipping address' at checkout is also validated.
 
 Installation is simple.
 
-For support/feedback, https://www.zen-cart.com/showthread.php?193601-PO-Box-Ban-1-4-support-thread
+For support/feedback, https://www.zen-cart.com/showthread.php?99784-PO-Box-Ban-support-thread
 
 
 
@@ -88,8 +89,8 @@ History
 3. Validate 'My Account' option                				1.2		26.06.2008
 4. Improves accuracy of detection							1.3		07.01.2009
 5. Improves accuracy of detection, better functionality 	1.4		03.10.2012
-6. Updated for Zen Cart 1.5.5f for more accuracy                1.5             01.12.2018
-
+6. Updated for Zencart 1.5.5f                 1.5             01.12.2018
+7. Updated for Zencart 1.5.6c                 1.6             08.11.2019
 
 
 DISCLAIMER
