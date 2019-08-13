@@ -1,9 +1,9 @@
 <?php
 /**
  * PO Box Ban
- * Version 1.3
- * By Steven300
- * @copyright Portions Copyright 2004-2008 Zen Cart Team
+ * Version 1.6
+ * By tmccaff origianl done by Steven300
+ * @copyright Copyright 2003-2018 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
  */
